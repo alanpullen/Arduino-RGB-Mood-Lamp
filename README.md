@@ -4,5 +4,5 @@ Arduino powered RGB mood lamp with sound to light and remote control.
 
 More details coming soon ...
 
-www.alanpullen.co.uk/projects/
+http://www.alanpullen.uk/projects/mood-lamp/
 
