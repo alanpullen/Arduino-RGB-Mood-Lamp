@@ -1,6 +1,11 @@
 /*********************************************************************************/
 /* Moodlamp - Arduino Powered Moodlamp
+/* by Alan Pullen
+/* Copyright ©2015. Alan Pullen.
+/* See LICENSE.MD for details
+/*
 /* Version 0.1
+/*
 /* Based on examples by Nico Hood / FastLED
 /*
 /*********************************************************************************/
