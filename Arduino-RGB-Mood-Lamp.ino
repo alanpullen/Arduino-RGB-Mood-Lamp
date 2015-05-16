@@ -32,6 +32,7 @@ const int pinStrobe = 4;     // Strobe Pin for MSGEQ7
 //================================================================================
 // IR Remote Control Codes (LED618 Remote Control, NEC Protocol)
 //================================================================================
+const uint16_t irAddr           = 0xFF00;    // Prevents over NEC remotes interfering
 const uint32_t irCmdInc	        = 0xFA05;
 const uint32_t irCmdDec	        = 0xFB04;
 const uint32_t irCmdOff	        = 0xF906;
@@ -99,8 +100,8 @@ int resetMode = 0;                // Used to reset a mode or increment colour cy
 //================================================================================
 void setup()
 {
-  Serial.begin(9600);
-  
+  //Serial.begin(9600);
+  //Serial.println("Starting up ...");
  
   
   pinMode(pwrLed, OUTPUT);
@@ -143,9 +144,13 @@ void loop()
   
   uint8_t oldSREG = SREG;
   cli();
-  if (IRProtocol)
+  if (IRProtocol && (IRAddress == irAddr))
   {
-    Serial.println(IRCommand, HEX);
+    
+    //Serial.println(IRProtocol, HEX);
+    //Serial.println(IRAddress, HEX);
+    //Serial.println(IRCommand, HEX);
+    
     switch(IRCommand)
     {
       case irCmdInc:
@@ -243,7 +248,7 @@ void loop()
         myColour = CRGB::Purple;
         break;
       default:
-        Serial.println("Command Not Recognised!!!");
+        ///Serial.println("Command Not Recognised!!!");
       break;
     }
     IRProtocol = 0;
@@ -289,6 +294,8 @@ void loop()
       break;
 
   }
+  
+  //delay(1000);
 }
 
 
